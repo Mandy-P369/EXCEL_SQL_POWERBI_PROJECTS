@@ -285,5 +285,72 @@ end
 );
 
 
+Select * from road_accident ; 
+Select sum(number_of_casualties),extract(month from accident_date) as month from road_accident where extract(year from accident_date)=2022 group by month;
+-- Select case 
+--  when extract(month from accident_date) in '1' then 'january'
+--  when extract(month from accident_date) in '2' then 'February'
+--  when extract(month from accident_date) in '3' then 'March'
+--  when extract(month from accident_date) in '4' then 'April'
+--  when extract(month from accident_date) in '5' then 'May'
+--  when extract(month from accident_date) in '6' then 'June'
+--  when extract(month from accident_date) in '7' then 'July'
+--  when extract(month from accident_date) in '8' then 'August'
+--  when extract(month from accident_date) in '9' then 'September'
+--  when extract(month from accident_date) in '10' then 'October'
+--  when extract(month from accident_date) in '11' then 'November'
+--  when extract(month from accident_date) in '12' then 'December'
+--  else 'No month'
+--  end as month_of_year ,sum(number_of_casualties) from road_accident group by (
+-- case 
+--  when extract(month from accident_date) in '1' then 'january'
+--  when extract(month from accident_date) in '2' then 'February'
+--  when extract(month from accident_date) in '3' then 'March'
+--  when extract(month from accident_date) in '4' then 'April'
+--  when extract(month from accident_date) in '5' then 'May'
+--  when extract(month from accident_date) in '6' then 'June'
+--  when extract(month from accident_date) in '7' then 'July'
+--  when extract(month from accident_date) in '8' then 'August'
+--  when extract(month from accident_date) in '9' then 'September'
+--  when extract(month from accident_date) in '10' then 'October'
+--  when extract(month from accident_date) in '11' then 'November'
+--  when extract(month from accident_date) in '12' then 'December'
+--  else 'No month'
+--  end
+
+Select
+	case	
+		when extract(month from accident_date) = '1' then 'January'
+		when extract(month from accident_date) = '2' then 'February'
+		 when extract(month from accident_date) = '3' then 'March'
+		 when extract(month from accident_date) = '4' then 'April'
+		 when extract(month from accident_date) = '5' then 'May'
+		 when extract(month from accident_date) = '6' then 'June'
+		 when extract(month from accident_date) = '7' then 'July'
+		 when extract(month from accident_date) = '8' then 'August'
+		 when extract(month from accident_date) = '9' then 'September'
+		 when extract(month from accident_date) = '10' then 'October'
+		 when extract(month from accident_date) = '11' then 'November'
+		 when extract(month from accident_date) = '12' then 'December'
+		end as month_name , sum(number_of_casualties) from road_accident
+		where extract(year from accident_date) = 2022 group by 
+		(
+		case	
+		when extract(month from accident_date) = '1' then 'January'
+			when extract(month from accident_date) = '2' then 'February'
+			 when extract(month from accident_date) = '3' then 'March'
+			 when extract(month from accident_date) = '4' then 'April'
+			 when extract(month from accident_date) = '5' then 'May'
+			 when extract(month from accident_date) = '6' then 'June'
+			 when extract(month from accident_date) = '7' then 'July'
+			 when extract(month from accident_date) = '8' then 'August'
+			 when extract(month from accident_date) = '9' then 'September'
+			 when extract(month from accident_date) = '10' then 'October'
+			 when extract(month from accident_date) = '11' then 'November'
+			 when extract(month from accident_date) = '12' then 'December'
+		end) order by sum(number_of_casualties) asc;
+
+
+
 
  
